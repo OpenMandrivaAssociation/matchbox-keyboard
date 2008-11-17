@@ -11,7 +11,7 @@ Group:          Accessibility
 License:        GPLv2+
 URL:            http://matchbox-project.org/
 Source0:        %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 Patch0:         matchbox-keyboard-0.1-fix-desktop.patch
 
