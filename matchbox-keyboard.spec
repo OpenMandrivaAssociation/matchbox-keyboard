@@ -39,7 +39,7 @@ XML layout configuration files.
 autoreconf
 
 %build
-%configure
+%configure --enable-gtk-im
 make %{?_smp_mflags}
 
 
@@ -71,4 +71,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/matchbox-keyboard/
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*
+%{_libdir}/gtk-2.0/2.10.0/immodules/libmb-im-invoker.la
+%{_libdir}/gtk-2.0/2.10.0/immodules/libmb-im-invoker.so
 
