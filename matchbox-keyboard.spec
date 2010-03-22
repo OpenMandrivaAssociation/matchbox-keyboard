@@ -22,6 +22,7 @@ BuildRequires:  libxtst-devel
 BuildRequires:  expat-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  libxi-devel
+BuildRequires:  libgtk+2-devel
 
 %description
 Matchbox-keyboard is an on screen 'virtual' or 'software'
