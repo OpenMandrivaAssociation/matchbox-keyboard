@@ -50,6 +50,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 desktop-file-install --vendor="" --delete-original \
   --dir=$RPM_BUILD_ROOT%{_datadir}/applications \
   $RPM_BUILD_ROOT%{_datadir}/applications/inputmethods/*.desktop
+rmdir $RPM_BUILD_ROOT%{_datadir}/applications/inputmethods
 
 
 %post
