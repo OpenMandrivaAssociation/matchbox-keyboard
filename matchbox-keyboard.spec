@@ -37,7 +37,7 @@ XML layout configuration files.
 %patch0 -p1 -b .fix-category
 
 %build
-%configure --disable-applet
+%configure
 make %{?_smp_mflags}
 
 
