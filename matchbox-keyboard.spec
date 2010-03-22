@@ -35,6 +35,8 @@ XML layout configuration files.
 %prep
 %setup -q
 %patch0 -p1 -b .fix-category
+# for newer libtool
+autoreconf
 
 %build
 %configure
