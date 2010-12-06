@@ -4,7 +4,7 @@
 
 Name:           matchbox-keyboard
 Version:        0.1
-Release:        %mkrel 2.6
+Release:        %mkrel 2.7
 Summary:        On screen virtual keyboard
 
 Group:          Accessibility
