@@ -6,13 +6,14 @@
 
 Name:           matchbox-keyboard
 Version:        0.1
-Release:        1
+Release:        2
 Summary:        On screen virtual keyboard
 
 Group:          Accessibility
 License:        GPLv2+
 URL:            http://matchbox-project.org/
 Source0:	%{name}-%{version}-%{date}.tar.xz
+Source1:	dbus-wait-0.0.0-20150701.tar.xz
 Patch0:         matchbox-keyboard-0.1-fix-desktop.patch
 
 BuildRequires:	pkgconfig(libfakekey)
@@ -24,6 +25,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(matchbox-panel)
+BuildRequires:	pkgconfig(dbus-1)
 
 %description
 Matchbox-keyboard is an on screen 'virtual' or 'software'
@@ -53,6 +55,7 @@ Static libraries and header files for %{name}.
 %prep
 %setup -qn %{name}-%{version}-%{date}
 %apply_patches
+tar -xvf %SOURCE1
 # for newer libtool
 autoreconf -fiv
 
@@ -60,10 +63,15 @@ autoreconf -fiv
 export LDFLAGS=-lX11
 %configure --enable-gtk-im --enable-applet
 %make
-
+pushd dbus-wait-0.0.0-20150701
+autoreconf -fiv
+%configure
+%make
+popd
 
 %install
 %makeinstall_std
+%makeinstall_std -C dbus-wait-0.0.0-20150701
 
 desktop-file-install --vendor="" --delete-original \
   --dir=%{buildroot}%{_datadir}/applications \
@@ -73,6 +81,7 @@ rmdir %{buildroot}%{_datadir}/applications/inputmethods
 %files
 %doc AUTHORS COPYING README
 %{_bindir}/matchbox-keyboard
+%{_bindir}/dbus-wait
 %{_datadir}/matchbox-keyboard/
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*
