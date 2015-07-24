@@ -1,0 +1,13 @@
+diff --git a/src/matchbox-keyboard-image.c b/src/matchbox-keyboard-image.c
+index 8accc3e..26ff56b 100644
+--- a/src/matchbox-keyboard-image.c
++++ b/src/matchbox-keyboard-image.c
+@@ -65,7 +65,7 @@ png_file_load (const char *file,
+     return NULL;
+   }
+ 
+-  if ( setjmp( png_ptr->jmpbuf ) ) {
++  if (setjmp(png_jmpbuf(png_ptr))){
+     png_destroy_read_struct( &png_ptr, &info_ptr, NULL);
+     fclose(fd);
+     return NULL;
