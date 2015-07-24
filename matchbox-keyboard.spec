@@ -1,4 +1,4 @@
-%define date	20150602
+%define date	20150724
 
 %define	major	0
 %define	libname	%mklibname matchbox-keyboard %{major}
@@ -6,7 +6,7 @@
 
 Name:           matchbox-keyboard
 Version:        0.1
-Release:        2
+Release:        1
 Summary:        On screen virtual keyboard
 
 Group:          Accessibility
@@ -15,6 +15,8 @@ URL:            http://matchbox-project.org/
 Source0:	%{name}-%{version}-%{date}.tar.xz
 Source1:	dbus-wait-0.0.0-20150701.tar.xz
 Patch0:         matchbox-keyboard-0.1-fix-desktop.patch
+Patch4:		libpng-1.5.patch
+
 
 BuildRequires:	pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(libpng)
@@ -60,7 +62,7 @@ tar -xvf %SOURCE1
 autoreconf -fiv
 
 %build
-export LDFLAGS=-lX11
+export LDFLAGS="-lX11 -lXrender"
 %configure --enable-gtk-im --enable-applet
 %make
 pushd dbus-wait-0.0.0-20150701
@@ -88,10 +90,10 @@ rmdir %{buildroot}%{_datadir}/applications/inputmethods
 %{_libdir}/matchbox-panel/libkeyboard.so
 %{_libdir}/gtk-2.0/2.10.0/immodules/libmb-im-invoker.so
 
-%files -n %{libname}
-%{_libdir}/libmatchbox-keyboard.so.%{major}*
+#% files -n %{libname}
+#% {_libdir}/libmatchbox-keyboard.so.%{major}*
 
-%files -n %{devname}
-%{_libdir}/libmatchbox-keyboard.so
-%{_libdir}/pkgconfig/libmatchbox-keyboard.pc
-%{_includedir}/libmatchbox-keyboard/*.h
+#% files -n %{devname}
+#%{_libdir}/libmatchbox-keyboard.so
+#%{_libdir}/pkgconfig/libmatchbox-keyboard.pc
+#%{_includedir}/libmatchbox-keyboard/*.h
