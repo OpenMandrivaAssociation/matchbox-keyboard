@@ -56,7 +56,7 @@ Static libraries and header files for %{name}.
 
 %prep
 %setup -qn %{name}-%{version}-%{date}
-%apply_patches
+%autopatch -p1
 tar -xvf %SOURCE1
 # for newer libtool
 autoreconf -fiv
