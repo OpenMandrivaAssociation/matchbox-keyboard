@@ -11,7 +11,7 @@ Summary:        On screen virtual keyboard
 
 Group:          Accessibility
 License:        GPLv2+
-URL:            http://matchbox-project.org/
+URL:            https://matchbox-project.org/
 Source0:	%{name}-%{version}-%{date}.tar.xz
 Source1:	dbus-wait-0.0.0-20150701.tar.xz
 Patch0:         matchbox-keyboard-0.1-fix-desktop.patch
