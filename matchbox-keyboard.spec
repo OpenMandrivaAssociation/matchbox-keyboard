@@ -18,6 +18,11 @@ Patch0:         matchbox-keyboard-0.1-fix-desktop.patch
 Patch4:		libpng-1.5.patch
 
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(xft)
